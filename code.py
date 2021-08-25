@@ -7,10 +7,10 @@ def function1(a):
             b[c] += 1
     return b
 
-def function2(a):
+def freq_count(sequence):
     print('freqs')
-    total = float(sum([a[b] for b in a.keys()]))
-    for b in a.keys():
-        print(b + ':' + str(a[b]/total))
+    total = float(sum([sequence[base] for base in sequence.keys()]))
+    for base in sequence.keys():
+        print(base + ':' + str(sequence[base]/total))
 
-function2(function1('ATCTGACGCGCGCCGC'))
+freq_count(function1('ATCTGACGCGCGCCGC'))
