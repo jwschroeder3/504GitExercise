@@ -3,7 +3,9 @@ in a sequence that belong to each base.
 '''
 
 def count_basie(seq):
-    '''Counts the number of occurances of each base in seq.
+    '''Counts the number of occurances of each base in seq. Returns
+    a dictionary, the keys of which are bases and the values of which
+    are the frequency of each base.
 
     Args:
     -----
@@ -22,7 +24,7 @@ def count_basie(seq):
         if base not in base_count_dict:
             base_count_dict[base] = 1
         else:
-            base_count_dict[base] *= 1
+            base_count_dict[base] += 1
     return base_count_dict
 
 def print_base_fractions(count_dict):
