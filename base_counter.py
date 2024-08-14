@@ -1,21 +1,5 @@
 BASES = ["A", "C", "G", "T"]
 
-
-class NoSuchBaseException(Exception):
-
-    def __init__(self, bad_base, position):
-        self.base = bad_base
-        self.position = position
-        self.message = f"Invalid base '{self.base}' encountered at position {self.position}"
-        super().__init__(self.message)
-
-
-def check_seq(seq):
-    for i,base in enumerate(seq):
-        if base not in BASES:
-            raise NoSuchBaseException(base, i)
-
-
 def count_bases(seq):
     '''Counts the number of occurances of each base in seq.
 
@@ -62,7 +46,7 @@ def print_base_fractions(count_dict):
     print('freqs')
     total = float(sum([count_dict[base] for base in count_dict.keys()]))
     for base in count_dict.keys():
-        print(base + ':' + str(count_dict[base]/total))
+        print(base + ': ' + str(count_dict[base]/total))
 
 if __name__ == "__main__":
     seq = 'ATCTGACGCGCGCCGC'
