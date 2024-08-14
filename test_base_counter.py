@@ -13,13 +13,20 @@ class TestBase:
         '''Tests that the total count of bases equals the length of the
         input sequence.
         '''
-        seq_len = len(self.seq)
+        seq_len = 16
         # get the count of each base in self.seq as dictionary
         count_dict = base_counter.count_bases(self.seq)
         # sum the values in the dictionary
         total_count = np.sum([count for count in count_dict.values()])
         # the count and length must be equal to pass this test
         assert total_count == seq_len
+
+    def test_basecount(self):
+        answer_dict={"A": 2, "C": 7, "G": 5, "T": 2}
+        # get the count of each base in self.seq as dictionary
+        count_dict = base_counter.count_bases(self.seq)
+        for base,base_count in answer_dict.items():
+            assert base_count == count_dict[base]
 
     def test_base(self):
         '''Tests whether the set of characters in seq are in the allowable
