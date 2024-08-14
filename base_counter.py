@@ -1,3 +1,4 @@
+<<<<<<< HEAD:base_counter.py
 BASES = ["A", "C", "G", "T"]
 
 
@@ -69,4 +70,3 @@ if __name__ == "__main__":
     check_seq(seq)
     base_counts = count_bases(seq)
     print_base_fractions(base_counts)
-
