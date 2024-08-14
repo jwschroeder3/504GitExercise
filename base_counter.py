@@ -1,22 +1,34 @@
-'''Simple utilites for counting and reporting the fraction of positions
-in a sequence that belong to each base.
-'''
+BASES = ["A", "C", "G", "T"]
 
-def count_basie(seq):
-    '''Counts the number of occurances of each base in seq. Returns
-    a dictionary, the keys of which are bases and the values of which
-    are the frequency of each base.
+
+class NoSuchBaseException(Exception):
+
+    def __init__(self, bad_base, position):
+        self.base = bad_base
+        self.position = position
+        self.message = f"Invalid base '{self.base}' encountered at position {self.position}"
+        super().__init__(self.message)
+
+
+def check_seq(seq):
+    for i,base in enumerate(seq):
+        if base not in BASES:
+            raise NoSuchBaseException(base, i)
+
+
+def count_bases(seq):
+    '''Counts the number of occurances of each base in seq.
 
     Args:
     -----
     seq : str
-        The sequence in which to count base occurances.
+        The sequence to count base occurances in
 
     Returns:
     --------
     base_count_dict : dict
-        A dictionary, the keys of which are base identities,
-        the values of which are the number of occurences of the key base.
+        Dictionary, the keys of which are base identities,
+        the values of which are the number of occurences of the base.
     '''
 
     base_count_dict = dict()
@@ -26,6 +38,7 @@ def count_basie(seq):
         else:
             base_count_dict[base] += 1
     return base_count_dict
+
 
 def print_base_fractions(count_dict):
     '''Prints the proportion of positions having each base in
@@ -46,15 +59,13 @@ def print_base_fractions(count_dict):
     Fraction of bases counted in count_dict belonging to each base.
     '''
 
-    print()
-    print('Fraction of bases of each identity in sequence')
-    print("----------------------------------------------")
+    print('freqs')
     total = float(sum([count_dict[base] for base in count_dict.keys()]))
     for base in count_dict.keys():
-        base_frac = count_dict[base] / total
-        print(base + ': ' + str(base_frac))
+        print(base + ':' + str(count_dict[base]/total))
 
 if __name__ == "__main__":
-    base_counts = count_basie('ATCTGACGCGCGCCGC')
+    seq = 'ATCTGACGCGCGCCGC'
+    check_seq(seq)
+    base_counts = count_bases(seq)
     print_base_fractions(base_counts)
-
