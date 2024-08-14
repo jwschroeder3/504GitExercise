@@ -1,4 +1,3 @@
-<<<<<<< HEAD:base_counter.py
 BASES = ["A", "C", "G", "T"]
 
 
