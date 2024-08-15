@@ -1,7 +1,7 @@
 import pytest
 import numpy as np
 
-import base_counter
+import base_fraction
 
 class TestBase:
 
@@ -15,7 +15,7 @@ class TestBase:
         '''
         seq_len = 16
         # get the count of each base in self.seq as dictionary
-        count_dict = base_counter.count_bases(self.seq)
+        count_dict = base_fraction.count_bases(self.seq)
         # sum the values in the dictionary
         total_count = np.sum([count for count in count_dict.values()])
         # the count and length must be equal to pass this test
@@ -24,7 +24,7 @@ class TestBase:
     def test_basecount(self):
         answer_dict={"A": 2, "C": 7, "G": 5, "T": 2}
         # get the count of each base in self.seq as dictionary
-        count_dict = base_counter.count_bases(self.seq)
+        count_dict = base_fraction.count_bases(self.seq)
         for base,base_count in answer_dict.items():
             assert base_count == count_dict[base]
 
@@ -41,8 +41,8 @@ class TestBase:
         appears masquerading as a base.
         '''
         # Check if NoSuchBaseException is raised
-        with pytest.raises(base_counter.NoSuchBaseException) as exc_info:
-            base_counter.check_seq(self.bad_seq)
+        with pytest.raises(base_fraction.NoSuchBaseException) as exc_info:
+            base_fraction.check_seq(self.bad_seq)
 
         # Verify the exception was raised with the correct message
         assert exc_info.value.base == ' '
