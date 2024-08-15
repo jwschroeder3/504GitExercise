@@ -68,7 +68,7 @@ def print_base_fractions(count_dict):
     print('freqs')
     total = float(sum([count_dict[base] for base in count_dict.keys()]))
     for base in count_dict.keys():
-        print(base + ':' + str(count_dict[base]/total))
+        print(base + ': ' + str(count_dict[base]/total))
 
 if __name__ == "__main__":
     seq = 'ATCTGACGCGCGCCGC'
