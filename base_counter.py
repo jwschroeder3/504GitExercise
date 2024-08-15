@@ -2,6 +2,8 @@ BASES = ["A", "C", "G", "T"]
 
 
 class NoSuchBaseException(Exception):
+    '''Class used to raise helpful Exception when invalid base is encountered
+    '''
 
     def __init__(self, bad_base, position):
         self.base = bad_base
@@ -11,9 +13,13 @@ class NoSuchBaseException(Exception):
 
 
 def check_seq(seq):
-    for i,base in enumerate(seq):
-        if base not in BASES:
-            raise NoSuchBaseException(base, i)
+    '''QC helper to check input sequence for invalid bases.
+    If any character is encountered which is not in BASES,
+    raise NoSuchBaseException.
+    '''
+    for i,char in enumerate(seq):
+        if char not in BASES:
+            raise NoSuchBaseException(char, i)
 
 
 def count_bases(seq):
