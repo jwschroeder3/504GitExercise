@@ -50,5 +50,3 @@ class TestBase:
         assert str(exc_info.value) == "Invalid base ' ' encountered at position 7"
 
 
-
-
