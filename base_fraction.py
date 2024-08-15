@@ -50,6 +50,5 @@ def print_base_fractions(count_dict):
 
 if __name__ == "__main__":
     seq = 'ATCTGACGCGCGCCGC'
-    check_seq(seq)
     base_counts = count_bases(seq)
     print_base_fractions(base_counts)
